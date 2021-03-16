@@ -1,28 +1,28 @@
 import "./main.sass"
 import GlobalNavbar from "./components/GlobalNavbar";
 import Jumbo from "./components/Jumbo";
-import Results from "./components/Results";
 import { Container } from "react-bootstrap";
-
-// import "bootstrap/scss/_variables.scss";
-// import "bootstrap/scss/_mixins.scss";
-// import "bootstrap/scss/_utilities.scss";
-// import "bootstrap/scss/bootstrap-grid.scss";
-// import "bootstrap/scss/bootstrap-reboot.scss"
-// import "bootstrap/scss/_navbar.scss"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
   return (
-    <div>
+    <Router>
       <GlobalNavbar />
       <Container className="py-4">
-          <Jumbo />
-          <Results />
+        <Jumbo />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/saved" component={Saved} />
+          <Route component={NotFound} />
+        </Switch>
       </Container>
-    </div>
+    </Router>
   );
-
+  
 }
 
 export default App;
