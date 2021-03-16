@@ -2,16 +2,16 @@ import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import API from "../../utils/api";
 
-function Search() {
+function Search({setBooks}) {
 
     const bookInput = useRef();
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        API.getBooks(bookInput.current.value)
+        API.searchBooks(bookInput.current.value)
             .then(({data}) => {
-                console.log(data);
+                setBooks(data);
             })
     }
 
